@@ -26,7 +26,7 @@ class AuthController extends Controller
             }
         }
 
-        return redirect('/login');
+        return redirect('/login')->with('message', 'NIS atau Password salah');
     }
 
     public function changePassword(Request $request)

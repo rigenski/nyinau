@@ -1,11 +1,11 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
         <div class="sidebar-brand-icon ">
-            <img src="{{asset('assets/img/logo.png')}}" width="50em" alt="">
+            <img src="{{asset('assets/img/logo.png')}}" width="36px" alt="">
         </div>
-        <div class="sidebar-brand-text mx-0">NYINAU</div>
+        <div class="sidebar-brand-text ml-1">NYINAU</div>
     </a>
 
     <div class="sidebar-heading mt-4">
@@ -36,7 +36,7 @@
             <span>Guru</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link py-2" href="/admin/course">
+        <a class="nav-link py-2" href="/admin/class">
             <i class="fas fa-book-open"></i>
             <span>Kelas</span></a>
     </li>

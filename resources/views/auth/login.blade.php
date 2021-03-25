@@ -1,5 +1,7 @@
 @extends("../layouts/auth")
 
+@section("title", "Login")
+
 @section('main')
 <div class="row">
     <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
@@ -28,6 +30,11 @@
                 <button type="submit" class="btn btn-primary btn-user btn-block">
                     Login
                 </button>
+                @if(session('message'))
+                <div class="alert alert-danger mt-4 mb-0" role="alert">
+                    {{ session('message') }}
+                </div>
+                @endif
             </form>
         </div>
     </div>
