@@ -114,4 +114,13 @@ class StudentController extends Controller
         User::find($id)->delete();
         return redirect('/admin/student/')->with('status', 'Data Berhasil Dihapus !');
     }
+
+    public function frontIndex()
+    {
+        $student = Student::find(auth()->user()->id);
+        $students = Student::where('class_id', $student->class_id)->get();
+
+
+        return view('student', ['students' => $students]);
+    }
 }

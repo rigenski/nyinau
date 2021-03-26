@@ -14,15 +14,15 @@
                 @csrf
                 <div class="form-group">
                     <input type="password" class="form-control form-control-user"
-                        name="old_password" placeholder="Password Lama">
+                        name="old_password" placeholder="Password Lama" required>
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control form-control-user"
-                        name="new_password" placeholder="Password Baru">
+                        name="new_password" placeholder="Password Baru" required>
                 </div>
                 <div class="form-group">
                     <input type="password" class="form-control form-control-user"
-                        name="conf_password" placeholder="Konfirmasi Password">
+                        name="conf_password" placeholder="Konfirmasi Password" required>
                 </div>
                 {{-- <div class="form-group">
                     <div class="custom-control custom-checkbox small">
@@ -34,6 +34,11 @@
                 <button type="submit" class="btn btn-primary btn-user btn-block">
                     Change Password
                 </button>
+                @if(session('message'))
+                <div class="alert alert-danger mt-4 mb-0" role="alert">
+                    {{ session('message') }}
+                </div>
+                @endif
             </form>
         </div>
     </div>

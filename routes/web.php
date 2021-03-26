@@ -31,6 +31,17 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,siswa,guru']], function 
  */
 Route::group(['middleware' => ['auth', 'checkRole:siswa,guru']], function () {
     Route::view('/', 'welcome');
+    Route::get('/student', 'StudentController@frontIndex');
+    Route::get('/schedule', function () {
+        return view('schedule');
+    });
+    Route::get('/announcement', function () {
+        return view('announcement');
+    });
+    Route::get('/profile', function () {
+        return view('profile');
+    });
+    Route::patch('/profile/update', 'AuthController@updateProfile');
 });
 /**
  * Role Admin

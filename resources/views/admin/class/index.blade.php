@@ -19,29 +19,32 @@
   <div class="card-body">
       
     <!-- end message -->
-            <table class="table table-bordered table-striped mt-4">
-                <thead class="bg-primary text-white">
-                    <tr>
-                    <th>No</th>
-                    <th>Nama Kelas</th>
-                    <th style="text-align:center;">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach($class as $kelas)
-                  <tr>
-                      <th>{{$loop->iteration}}</th>
-                      <td>{{$kelas->name}}</td>
-                      <td style="text-align:center">
-                        <a href="/admin/class/{{$kelas->id}}/edit" class="btn btn-success btn-sm mb-2 px-4">Edit</a>
-                        <a  href="/admin/class/{{$kelas->id}}/delete" class="btn btn-danger btn-sm mb-2 px-4">
-                          Hapus
-                        </a>
-                      </td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
+    <div class="table-responsive">
+
+      <table class="table table-bordered table-striped mt-4">
+        <thead class="bg-primary text-white">
+          <tr>
+            <th>No</th>
+            <th>Nama Kelas</th>
+            <th style="text-align:center;">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($class as $kelas)
+          <tr>
+            <th>{{$loop->iteration}}</th>
+            <td>{{$kelas->name}}</td>
+            <td style="text-align:center">
+              <a href="/admin/class/{{$kelas->id}}/edit" class="btn btn-success btn-sm mb-2 px-4">Edit</a>
+              <a  href="/admin/class/{{$kelas->id}}/delete" class="btn btn-danger btn-sm mb-2 px-4">
+                Hapus
+              </a>
+            </td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
     <!-- Modal -->
@@ -67,7 +70,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Tambah Data</button>
+        <button type="submit" class="btn btn-primary">Tambah</button>
         </form>
       </div>
     </div>

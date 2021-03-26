@@ -29,7 +29,7 @@
           <div class="form-group">
           <label for="class">Kelas : </label>
           <select class="form-control @error('class') is-invalid @enderror" name="class" id="class">
-            <option value="">Masukan Kelas</option>
+            <option value="">Pilih Kelas</option>
             @foreach($kelas as $class)
             <option value="{{$class->id}}" {{old('class') == $class->id ? 'selected' : null}}>{{$class->name}}</option>
             @endforeach
@@ -39,7 +39,7 @@
           @enderror
         </div>
       
-          <button type="submit" class="btn btn-primary">Tambah Data</button>
+          <button type="submit" class="btn btn-primary">Tambah Data Guru</button>
       </form>
   </div>
 </div>

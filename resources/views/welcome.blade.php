@@ -80,7 +80,7 @@
             @endif
 
             <div class="content">
-                <a href="/admin">
+                <a href="/student">
                     <div class="title m-b-md">
                         Klik Disini
                     </div>

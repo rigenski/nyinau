@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Ubah Siswa')
+@section('title', 'Ubah Guru')
 
 @section('main')
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Siswa / Edit Siswa</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Guru / Ubah Guru</h6>
   </div>
   <div class="card-body">
     <form action="/admin/teacher/{{$teacher->id}}/update" method="POST">
@@ -31,7 +31,7 @@
             <div class="invalid-feedback">{{$message}}</div>
           @enderror
         </div>
-          <button type="submit" class="btn btn-primary">Ubah Data</button>
+          <button type="submit" class="btn btn-primary">Ubah Data Guru</button>
       </form>
   </div>
 </div>

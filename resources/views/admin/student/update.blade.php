@@ -5,7 +5,7 @@
 @section('main')
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Siswa / Edit Siswa</h6>
+      <h6 class="m-0 font-weight-bold text-primary">Siswa / Ubah Siswa</h6>
   </div>
   <div class="card-body">
     <form action="/admin/student/{{$student->id}}/update" method="POST">
