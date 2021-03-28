@@ -20,7 +20,7 @@
      <table class="table table-bordered table-striped mt-4">
        <thead class="bg-primary text-white">
          <tr>
-           <th>Nomor</th>
+           <th>No</th>
            <th>Nis</th>
            <th>Nama</th>
            <th>Kelas</th>

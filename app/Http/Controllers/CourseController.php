@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Student;
-use App\User;
-use App\Kelas;
+use App\Course;
 
-class StudentController extends Controller
+class CourseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
-        return view('admin.student.index', compact('students'));
+        $courses = Course::all();
+        return view('admin.course.index', compact('courses'));
     }
 
     /**
@@ -27,8 +25,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $kelas = Kelas::all();
-        return view('admin.student.create', compact('kelas'));
+        //
     }
 
     /**
@@ -41,25 +38,12 @@ class StudentController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'nis' => 'required',
-            'class' => 'required',
         ]);
 
-        $user = User::create([
-            "name" => $request->name,
-            "role" => "siswa",
-            "nis" => $request->nis,
-            "password" => bcrypt($request->nis)
+        Course::create([
+            'name' => $request->name
         ]);
-
-        Student::create([
-            'name' => $request->name,
-            'nis' => $request->nis,
-            'class_id' => $request->class,
-            'user_id' => $user->id,
-        ]);
-
-        return redirect('/admin/student')->with('status', 'Siswa Berhasil Ditambahkan');
+        return redirect('admin/course')->with('status', 'Mata Pelajaran Berhasil Ditambahkan');
     }
 
     /**
@@ -81,9 +65,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        $student = Student::find($id);
-        $kelas = Kelas::where('id', '!=', $student->class->id)->get();
-        return view('admin.student.update', compact('student', 'kelas'));
+        $courses = Course::find($id);
+        return view('/admin/course/update', compact('courses'));
     }
 
     /**
@@ -95,13 +78,14 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'class_id' => 'required',
+        $this->validate($request, [
+            'name' => 'required'
         ]);
-        Student::find($id)->update($request->all());
-        return redirect('/admin/student')->with('status', 'Data Berhasil Diubah');
+
+        Course::find($id)->update($request->all());
+        return redirect('/admin/course')->with('status', 'Mata Pelajaran Berhasil Diubah');
     }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -110,8 +94,7 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        Student::where('user_id', $id)->delete();
-        User::find($id)->delete();
-        return redirect('/admin/student/')->with('status', 'Data Berhasil Dihapus !');
+        Course::find($id)->delete();
+        return redirect('/admin/course')->with('status', 'Mata Pelajaran Berhasil Dihapus !');
     }
 }

@@ -40,14 +40,14 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
                 <div class="container">
-                    <a class="navbar-brand" href="#">Nyinau</a>
+                    <a class="navbar-brand text-primary font-weight-bold" href="/">Nyinau</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link text-primary" href="/">Home</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Home</span></a>
                             </li>
                             @if(auth()->user()->role == 'siswa')
                             <li class="nav-item">
@@ -57,21 +57,24 @@
                                 <a class="nav-link" href="/student">Daftar Siswa</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/announcement">Announcement</a>
+                                <a class="nav-link" href="/announcement">Pengumuman</a>
                             </li>
                             @endif
                             @if(auth()->user()->role == "guru")
                             <li class="nav-item">
-                                <a class="nav-link" href="/announcement">Announcement</a>
+                                <a class="nav-link" href="/announcement">Pengumuman</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/student">Daftar Siswa</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="/teacher">Daftar Guru</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/schedule">Jadwal Pelajaran</a>
                             </li>
                             @endif
-                            <li>
+                            <li class="d-none d-md-block">
                                 <div class="mt-2 mx-2">|</div>
                             </li>
 
@@ -104,8 +107,8 @@
         <footer class="footer">
             <div class="w-100 bg-primary">
                 <div class="container py-4 d-flex justify-content-between">
-                    <h6 class="text-white m-0">Copyright {{ date('Y')}} </h6>
-                    <p class="text-light m-0">Created by Hamba Allah</p>
+                    <h6 class="text-white m-0">Copyright - {{ date('Y')}} </h6>
+                    <p class="text-light m-0">Created by <b>Ngobar RPL</b></p>
                 </div>
             </div>
         </footer>

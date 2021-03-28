@@ -26,33 +26,38 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,siswa,guru']], function 
     Route::view('/change_password', 'auth.change_password');
     Route::post('/postChangePassword', 'AuthController@changePassword');
 });
+
 /**
  * Role Siswa, Guru
  */
 Route::group(['middleware' => ['auth', 'checkRole:siswa,guru']], function () {
-    Route::view('/', 'welcome');
-    Route::get('/student', 'StudentController@frontIndex');
-    Route::get('/schedule', function () {
-        return view('schedule');
-    });
-    Route::get('/announcement', function () {
-        return view('announcement');
-    });
-    Route::get('/profile', function () {
-        return view('profile');
-    });
-    Route::patch('/profile/update', 'AuthController@updateProfile');
+    Route::get('/', 'FrontController@home');
+    Route::get('/student', 'FrontController@student');
+    Route::get('/schedule', 'FrontController@schedule');
+    Route::get('/announcement', 'FrontController@announcement');
+    Route::post('/announcement/store', 'FrontController@announcementStore');
+    Route::get('/profile', 'FrontController@profile');
+    Route::patch('/profile/update', 'FrontController@profileUpdate');
+});
+
+/**
+ * Role Guru
+ */
+Route::group(['middleware' => ['auth', 'checkRole:guru']], function () {
+    Route::get('/teacher', 'FrontController@teacher');
 });
 /**
  * Role Admin
  */
 Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
-    Route::view('/admin', 'admin.index');
-    // Route::view('/admin/reference', 'admin.reference');
-    // Route::view('/admin/student', 'admin.student');
-    // Route::view('/admin/teacher', 'admin.teacher');
-    // Route::view('/admin/course', 'admin.course');
-    // Route::view('/admin/schedule', 'admin.schedule');
+    Route::get('/admin', 'BackController@index');
+
+    // Announcement
+    Route::get('/admin/announcement', 'AnnouncementController@index');
+    Route::post('/admin/announcement/store', 'AnnouncementController@store');
+    Route::get('/admin/announcement/{announcement_id}/edit', 'AnnouncementController@edit');
+    Route::patch('/admin/announcement/{announcement_id}/update', 'AnnouncementController@update');
+    Route::get('/admin/announcement/{announcement_id}/delete', 'AnnouncementController@destroy');
 
     // Class 
     Route::get('/admin/class', 'ClassController@index');
@@ -76,4 +81,20 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
     Route::get('admin/teacher/{teacher_id}/edit', 'TeacherController@edit');
     Route::patch('admin/teacher/{teacher_id}/update', 'TeacherController@update');
     Route::get('/admin/teacher/{teacher_id}/delete', 'TeacherController@destroy');
+
+    // Course
+    Route::get('/admin/course', 'CourseController@index');
+    Route::post('/admin/course/store', 'CourseController@store');
+    Route::get('/admin/course/{course}/edit', 'CourseController@edit');
+    Route::patch('/admin/course/{course_id}/update', 'CourseController@update');
+    Route::get('/admin/course/{course_id}/delete', 'CourseController@destroy');
+
+    // Schedule
+    Route::get('/admin/schedule/', 'ScheduleController@index');
+    Route::get('/admin/schedule/class/{class_id}', 'ScheduleController@detail');
+    Route::get('/admin/schedule/create', 'ScheduleController@create');
+    Route::post('/admin/schedule/store', 'ScheduleController@store');
+    Route::get('/admin/schedule/{schedule}/edit', 'ScheduleController@edit');
+    Route::patch('admin/schedule/{schedule_id}/update', 'ScheduleController@update');
+    Route::get('/admin/schedule/{schedule_id}/delete', 'ScheduleController@destroy');
 });

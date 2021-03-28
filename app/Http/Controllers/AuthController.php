@@ -50,21 +50,6 @@ class AuthController extends Controller
         return redirect('/change_password')->with('message', 'Masukkan Password dengan Benar');
     }
 
-    public function updateProfile(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-        ]);
-
-        $user = User::find(auth()->user()->id);
-
-        $user->update([
-            'name' => $request->name
-        ]);
-
-        return redirect('/profile')->with('status', 'Data Berhasil Diubah');
-    }
-
     public function logout()
     {
         Auth::logout();

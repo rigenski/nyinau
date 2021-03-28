@@ -1,24 +1,24 @@
 @extends('layouts.front')
 
 @section('content')
-<section class="students py-5">
+<section class="teachers py-5">
     <div class="container">
         <div class="title py-4">
-            <h1 class="text-dark">Daftar Siswa</h1>
+            <h1 class="text-dark">Daftar Guru</h1>
         </div>
         <div class="body">
             <div class="row">
-                @foreach($students as $student)
-                <div class="student col-md-3 col-6 col-sm-4 mb-3 ">
+                @foreach($teachers as $teacher)
+                <div class="teacher col-md-3 col-sm-4 mb-3 ">
                     <div class="card shadow" >
-                        @if($student->image) 
-                        <img src="{{ asset('img/' . $student->image ) }}" class="card-img-top" alt="...">
+                        @if($teacher->image) 
+                        <img src="{{ asset('img/' . $teacher->image ) }}" class="card-img-top" alt="...">
                         @else
                         <img src="{{ asset('/assets/img/dummy.png') }}" class="card-img-top" alt="...">
                         @endif
                         <div class="card-body">
-                          <h6 class="text-bold text-dark font-weight-bold mb-0">{{ $student->name }}</h6>
-                          <p class="my-0">{{ $student->nis }}</p>
+                          <h5 class="text-bold text-dark font-weight-bold">{{ $teacher->name }}</h5>
+                          <h6>{{ $teacher->nis }}</h6>
                         </div>
                       </div>
                 </div>

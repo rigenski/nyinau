@@ -21,7 +21,7 @@
             <span>Dashboard</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link py-2" href="/admin/reference">
+        <a class="nav-link py-2" href="/admin/announcement">
             <i class="fas fa-users"></i>
             <span>Pengumuman</span></a>
     </li>
